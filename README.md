@@ -1,6 +1,6 @@
 # blog
-我是说明文件
-> A Vue.js project
+
+> A Vue.js project 我是说明文件
 
 ## Build Setup
 
