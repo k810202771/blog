@@ -4,7 +4,13 @@
         <div class="header header_top">
             <div class="menu_center" :style="'max-width:'+$attrs.width+';'">
                 <div class="navber-nav el">
-                    <span>首页</span>
+                    首页
+                </div>
+                <div class="navber-nav el">
+                    简历
+                </div>
+                <div class="navber-nav el">
+                    留言板
                 </div>
                 <span class="search el">
                     <input class="search-input" type="text" placeholder="Search">
@@ -63,9 +69,8 @@ export default {
         background: #f6f6f6;
     }
     .search{
-        display: inline-block;
+        float: right;
         position: relative;
-        
     }
     .search-input{
         background: #eee;
