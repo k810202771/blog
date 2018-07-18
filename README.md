@@ -1,7 +1,7 @@
 # blog
 
 > A Vue.js project
-服务费
+
 ## Build Setup
 
 ``` bash
