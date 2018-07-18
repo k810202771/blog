@@ -38,6 +38,7 @@ export default {
       Icon:[
         {icon:"icon-1",name:"视频教程",select:"flase",windowData:{
           url:"", //连接地址
+          target:"window", //page新窗口打开页面，window打开窗口
           zindex:99, //层级
           hide:false, //隐藏 (true 最小化),(false 显示)
           type:0, //0创建后居中，1按照位置初始化  2全屏幕(位置无效，宽高无效)
@@ -46,6 +47,7 @@ export default {
         }},
         {icon:"icon-2",name:"前端日记",select:"flase",windowData:{
           url:"",
+          target:"window", //page新窗口打开页面，window打开窗口
           zindex:99,
           hide:false, //隐藏 (true 最小化),(false 显示)
           type:2, //0创建后居中，1按照位置初始化  2全屏幕
@@ -53,7 +55,8 @@ export default {
           left:500
         }},
         {icon:"icon-3",name:"我的简历",select:"flase",windowData:{
-          url:"",
+          url:{name:"page_article_detailed",params:{newsId:"44"}},
+          target:"page", //page新窗口打开页面，window打开窗口
           zindex:99,
           hide:false, //隐藏 (true 最小化),(false 显示)
           type:1, //0创建后居中，1按照位置初始化  2全屏幕
@@ -62,6 +65,7 @@ export default {
         }},
         {icon:"icon-4",name:"留言板",select:"flase",windowData:{
           url:"",
+          target:"window", //page新窗口打开页面，window打开窗口
           zindex:99,
           hide:false, //隐藏 (true 最小化),(false 显示)
           type:0, //0创建后居中，1按照位置初始化  2全屏幕
@@ -70,6 +74,7 @@ export default {
         }},
         {icon:"icon-4",name:"留言板",select:"flase",windowData:{
           url:"",
+          target:"window", //page新窗口打开页面，window打开窗口
           zindex:99,
           type:0, //0创建后居中，1按照位置初始化 2全屏幕
           hide:false, //隐藏 (true 最小化),(false 显示)

@@ -1,10 +1,9 @@
 @font-face {
   font-family: 'iconfont';
-  src:  url('fonts/icomoon.eot?ss3xtr');
-  src:  url('fonts/icomoon.eot?ss3xtr#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?ss3xtr') format('truetype'),
-    url('fonts/icomoon.woff?ss3xtr') format('woff'),
-    url('fonts/icomoon.svg?ss3xtr#icomoon') format('svg');
+  src: url('fonts/icomoon.eot?t=1531881133795'); /* IE9*/
+  src: url('fonts/icomoon.eot?t=1531881133795#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('fonts/icomoon.ttf?t=1531881133795') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('fonts/icomoon.svg?t=1531881133795#iconfont') format('svg'); /* iOS 4.1- */
   font-weight: normal;
   font-style: normal;
 }
@@ -18,64 +17,46 @@
   font-variant: normal;
   text-transform: none;
   /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
 
-.icon-1:before {
-  content: "\e900";
-}
-.icon-2:before {
-  content: "\e901";
-}
-.icon-3:before {
-  content: "\e902";
-}
-.icon-4:before {
-  content: "\e903";
-}
-.icon-5:before {
-  content: "\e904";
-}
-.icon-6:before {
-  content: "\e905";
-}
-.icon-7:before {
-  content: "\e906";
-}
-.icon-8:before {
-  content: "\e907";
-}
-.icon-9:before {
-  content: "\e908";
-}
-.icon-10:before {
-  content: "\e909";
-}
-.icon-11:before {
-  content: "\e90a";
-}
-.icon-12:before {
-  content: "\e90b";
-}
-.icon-13:before {
-  content: "\e90c";
-}
-.icon-14:before {
-  content: "\e90d";
-}
-.icon-15:before {
-  content: "\e90e";
-}
-.icon-16:before {
-  content: "\e90f";
-}
-.icon-17:before {
-  content: "\e910";
-}
-.icon-18:before {
-  content: "\e911";
-}
-.icon-19:before {
-  content: "\e912";
-}
+.icon-8:before { content: "\e661"; }
+
+.icon-11:before { content: "\e71e"; }
+
+.icon-6:before { content: "\e611"; }
+
+.icon-20:before { content: "\e7d4"; }
+
+.icon-7:before { content: "\e618"; }
+
+.icon-16:before { content: "\e62f"; }
+
+.icon-18:before { content: "\e60d"; }
+
+.icon-5:before { content: "\e839"; }
+
+.icon-10:before { content: "\e666"; }
+
+.icon-9:before { content: "\e63a"; }
+
+.icon-13:before { content: "\e624"; }
+
+.icon-14:before { content: "\e798"; }
+
+.icon-15:before { content: "\e60b"; }
+
+.icon-12:before { content: "\e696"; }
+
+.icon-17:before { content: "\e697"; }
+
+.icon-19:before { content: "\e60f"; }
+
+.icon-2:before { content: "\e607"; }
+
+.icon-1:before { content: "\e608"; }
+
+.icon-4:before { content: "\e609"; }
+
+.icon-3:before { content: "\e60a"; }

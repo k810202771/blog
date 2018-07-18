@@ -3,6 +3,11 @@
         <headnav width="990px"></headnav>
         <div class="content">
             <div class="article-header"><h1 class="article-title" v-html="title"></h1></div>
+            <div class="article-meta">
+                <span class="icon-11 icon"></span><span class="paragraph">2018-07-17</span>
+                <span class="icon-16 icon"></span><span class="paragraph">阅读(105)</span>
+                <span class="icon-18 icon"></span><span class="paragraph">评论</span>
+            </div>
             <div class="line"></div>
             <div class="article-content" v-html="msg">
                 
@@ -28,13 +33,19 @@ export default {
                 res = JSON.parse(res);
                 that.msg = that.$dehtml(res.msg);
                 that.title = that.$dehtml(res.title);
-                console.log(res);
+                //console.log(res);
             }
         });
+    },
+    watch:{
+        msg(res){
+            //console.log(res);
+            setTimeout(function(){
+                SyntaxHighlighter.highlight();
+            },1)
+        }
     }
 }
-//渲染代码
-SyntaxHighlighter.all();
 </script>
 
 
@@ -59,8 +70,20 @@ SyntaxHighlighter.all();
     text-align: center;
     line-height: 1.1em;
 }
+.article-meta{
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+.icon{
+    margin-right: 3px;
+}
+.paragraph{
+    margin-right: 10px;
+}
 .line{
     height: 1px;
     background: #eee;
+    margin: 5px 0;
 }
 </style>

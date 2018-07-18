@@ -3,19 +3,19 @@
         <div class="header"></div>
         <div class="header header_top">
             <div class="menu_center" :style="'max-width:'+$attrs.width+';'">
-                <div class="navber-nav el">
+                <div class="navber-nav el" @click="href({name:'name'})">
                     首页
                 </div>
-                <div class="navber-nav el">
+                <div class="navber-nav el" @click="href({name:'name'})">
                     简历
                 </div>
-                <div class="navber-nav el">
+                <div class="navber-nav el" @click="href({name:'name'})">
                     留言板
                 </div>
                 <span class="search el">
                     <input class="search-input" type="text" placeholder="Search">
                     <div class="search-box">
-                        <span class="search-icon">搜</span>
+                        <span class="search-icon icon-20"></span>
                     </div>
                 </span>
                 
@@ -34,7 +34,15 @@ export default {
         }
     },
     mounted(){
-        console.log(this);
+        //console.log(this);
+    },
+    methods:{
+        href(res){
+            let routeData = this.$router.resolve({
+                name: res.name
+            });
+            window.open(routeData.href, '_blank');
+        }
     }
 }
 </script>
@@ -52,12 +60,12 @@ export default {
         line-height: 60px;
         background: #fff;
         z-index: 99;
+        text-align: center;
     }
     .menu_center{
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: auto;
+        display: inline-block;
+        margin: 0 auto;
+        width: 100%;
         height: 100%;
     }
     .navber-nav{

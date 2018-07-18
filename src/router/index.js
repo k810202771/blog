@@ -18,7 +18,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'desktop',
+      name: 'home',
       component:desktop
     },{
       path: '/page/article/detailed/:newsId/',

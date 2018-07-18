@@ -52,7 +52,16 @@ export default {
             };
         }
         if(boolean){
-            this.$emit('InitializationWindow',this.$attrs.boxid);
+            switch(this.$attrs.array[this.$attrs.boxid].windowData.target){
+                case "window":
+                    this.$emit('InitializationWindow',this.$attrs.boxid);
+                    break;
+                case "page":
+                    console.log(this.$attrs.array[this.$attrs.boxid].windowData.url);
+                    let routeData = this.$router.resolve(this.$attrs.array[this.$attrs.boxid].windowData.url);
+                    window.open(routeData.href, '_blank');
+                    break;
+            }
         }
         //显示最小化窗口
         this.$attrs.array[this.$attrs.boxid].windowData.hide = false;

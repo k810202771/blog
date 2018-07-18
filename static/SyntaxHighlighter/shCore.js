@@ -711,7 +711,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
             'toolbar' : true,
 
             /** Enables quick code copy and paste from double click. */
-            'quick-code' : true,
+            'quick-code' : false,
 
             /** Forces code view to be collapsed. */
             'collapse' : false,
@@ -950,6 +950,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
          */
         highlight: function(globalParams, element)
         {
+            
             var elements = this.findElements(globalParams, element),
                 propertyName = 'innerHTML',
                 highlighter = null,
@@ -992,11 +993,10 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
                 // remove CDATA from <SCRIPT/> tags if it's present
                 if (conf.useScriptTags)
                     code = stripCData(code);
-
+                
                 // Inject title if the attribute is present
                 if ((target.title || '') != '')
                     params.title = target.title;
-
                 params['brush'] = brushName;
                 highlighter.init(params);
                 element = highlighter.getDiv(code);
@@ -1008,7 +1008,19 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
                 var tmp = element.firstChild.firstChild;
                 tmp.className = element.firstChild.className;
 
-                target.parentNode.replaceChild(tmp, target);
+                var cmp = document.createElement('div');
+                cmp.className = "syntaxhighlighterBoxp";
+                var ctmp = document.createElement('span');
+                ctmp.className = "syntaxhighlighterBox";
+                var CornerMark = document.createElement('div');
+                CornerMark.className = "CornerMark";
+                CornerMark.innerText = params.brush;
+                ctmp.appendChild(tmp);
+                ctmp.appendChild(CornerMark);
+                cmp.appendChild(ctmp);
+                target.parentNode.replaceChild(cmp, target);
+
+                console.log(tmp)
             }
         },
 
