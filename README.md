@@ -1,7 +1,7 @@
 # blog
 
 > A Vue.js project
-fwfwfwffeffe
+
 ## Build Setup
 
 ``` bash
