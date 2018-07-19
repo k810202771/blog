@@ -9,10 +9,13 @@
 <body>
     <input type="text">
     <?php
-        $folders = ["D:\phpStudy\WWW\blog\admin\utf8-php"];
+        require('func.php');
+        $folders = ["./utf8-php/",'./ace'];
+        $func = new Funcp;
         for($i=0;$i<count($folders);$i++){
-            echo recurDir($folders[$i],0777);
+            var_dump ($func -> is_Power($folders[$i]));
         }
+        
     ?>
 </body>
 </html>
