@@ -7,15 +7,22 @@
     <title>install</title>
 </head>
 <body>
-    <input type="text">
     <?php
         require('func.php');
-        $folders = ["./utf8-php/",'./ace'];
+        $folders = ["./utf8-php/",'./src/'];
         $func = new Funcp;
+        $blnumber = 0;
         for($i=0;$i<count($folders);$i++){
-            var_dump ($func -> is_Power($folders[$i]));
+            if($func -> is_Power($folders[$i])===true){
+                $bl = '可写';
+                $blnumber ++;
+            }else{
+                $bl = '不可写';
+            }
+            echo $folders[$i].'---------------------------->>'.$bl.'<br>';
         }
         
+        echo '<input type="button" '. ($blnumber == count($folders)?'':'disabled') .' value="下一步" >';
     ?>
 </body>
 </html>
