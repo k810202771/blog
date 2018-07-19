@@ -8,8 +8,9 @@
 </head>
 <body>
     <?php
+        $id = isset($_GET['pageid'])?$_GET['pageid']:'0';
         require('func.php');
-        $folders = ["./utf8-php/",'./src/'];
+        $folders = ["./","./utf8-php/",'./src/'];
         $func = new Funcp;
         $blnumber = 0;
         for($i=0;$i<count($folders);$i++){
@@ -22,7 +23,14 @@
             echo $folders[$i].'---------------------------->>'.$bl.'<br>';
         }
         
-        echo '<input type="button" '. ($blnumber == count($folders)?'':'disabled') .' value="下一步" >';
+        echo '<input type="button" '. ($blnumber == count($folders)?'':'disabled') .' value="next" onclick="next('.$id.')" >';
     ?>
 </body>
+<script>
+function next(id){
+    id++;
+    window.location.href = "?pageid="+id
+}
+
+</script>
 </html>
