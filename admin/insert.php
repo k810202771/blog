@@ -1,4 +1,5 @@
 <?php
+	//要访问conn必须设置res为true
 	$res = true;
 	//引入conn 请在文件结尾 关闭数据库 $conn->close();
 	require('conn.php');
