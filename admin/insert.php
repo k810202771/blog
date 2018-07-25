@@ -16,7 +16,7 @@
 		return $b;
 	}
 
-	for($i=0;$i<900000;$i++){
+	for($i=0;$i<10000;$i++){
 		$sql = 'insert into `fawf`(title,lastname,email,reg_date)values("'.getChar(15).'","'.getChar(2).'","",NOW())';
 		$res = $conn->query($sql);
 	}

@@ -16,7 +16,7 @@
 		lastname VARCHAR(30) NOT NULL,
 		email VARCHAR(50),
 		reg_date TIMESTAMP,
-		KEY title (title)
+		FULLTEXT KEY title (title)
 		)CHARSET=utf8;';
 	$res = $conn->query($sql);
 ?>

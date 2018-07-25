@@ -19,12 +19,15 @@
 	$text = '';
 	//for 拼接查询条件字符串
 	for($i=0;$i<count($seo);$i++){
-		$text.= '(title like "%'.$seo[$i].'%")'.($i==count($seo)-1?'':' or ');
+		$text.= 'title like "%'.$seo[$i].'%"'.($i==count($seo)-1?'':' or ');
 	}
+ 	$text = " MATCH(`title`) AGAINST('".$seo[0]."');";
 	//执行mysql查询
 	$sql = 'select * from fawf'.($text?' WHERE '.$text:'');
+	//var_dump($sql);
 	//res为查询结果 记得清除res的查询结果，res -> close()
 	$res = $conn->query($sql);
+	//var_dump($res);
 	//查询总结果数组初始化数据
 	$basedata = [];
 	//查询结果排序数组初始化数据
