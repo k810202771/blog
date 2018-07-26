@@ -1,4 +1,12 @@
 <?php
+	$pageindex = 0;
+	$pagemax = 5;
+	if(isset($_GET['pageindex'])){
+		$pageindex = $_GET['pageindex'];
+	}
+	if(isset($_GET['pagemax'])){
+		$pagemax = $_GET['pagemax'];
+	}
 	//引入文件
 	//要访问conn必须设置res为true
 	$res = true;
@@ -21,13 +29,13 @@
 	for($i=0;$i<count($seo);$i++){
 		$text.= 'title like "%'.$seo[$i].'%"'.($i==count($seo)-1?'':' or ');
 	}
- 	$text = " MATCH(`title`) AGAINST('".$seo[0]."');";
 	//执行mysql查询
-	$sql = 'select * from fawf'.($text?' WHERE '.$text:'');
-	//var_dump($sql);
+	$sql = 'select * from `fawf` '.($text?' WHERE '.$text:'');
+
+	//. ' limit '.$pageindex.','.$pagemax
+
 	//res为查询结果 记得清除res的查询结果，res -> close()
 	$res = $conn->query($sql);
-	//var_dump($res);
 	//查询总结果数组初始化数据
 	$basedata = [];
 	//查询结果排序数组初始化数据
@@ -43,8 +51,15 @@
 	}
 	//排序数组SORT_DESC为倒叙，相识度越大越靠前
  	array_multisort($sort,SORT_DESC,$basedata);
+
+	$echodata = [];
+	for($i=$pageindex*$pagemax;$i<($pageindex+1)*$pagemax;$i++){
+		if(isset($basedata[$i]) === true){
+			array_push($echodata,$basedata[$i]);
+		}
+	}
 	//输出结果
-	echo(json_encode($basedata,JSON_UNESCAPED_UNICODE));
+	echo(json_encode($echodata,JSON_UNESCAPED_UNICODE));
 	//输出错误
 	//echo($conn->error);
 	//清空res缓存

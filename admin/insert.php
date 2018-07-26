@@ -16,8 +16,8 @@
 		return $b;
 	}
 
-	for($i=0;$i<10000;$i++){
-		$sql = 'insert into `fawf`(title,lastname,email,reg_date)values("'.getChar(15).'","'.getChar(2).'","",NOW())';
+	for($i=0;$i<40000;$i++){
+		$sql = 'insert into `fawf`(title,text,email,reg_date)values("'.getChar(15).'","'.getChar(200).'","",NOW())';
 		$res = $conn->query($sql);
 	}
 	//关闭数据库

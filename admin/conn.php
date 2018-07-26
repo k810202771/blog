@@ -13,10 +13,10 @@
 	$sql = 'create table `fawf`(
 		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 		title VARCHAR(255) NOT NULL,
-		lastname VARCHAR(30) NOT NULL,
-		email VARCHAR(50),
-		reg_date TIMESTAMP,
-		FULLTEXT KEY title (title)
+		text TEXT NOT NULL,
+		volume INT NOT NULL,
+		replyindex INT NOT NULL,
+		reg_date TIMESTAMP 
 		)CHARSET=utf8;';
 	$res = $conn->query($sql);
 ?>
