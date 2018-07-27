@@ -8,11 +8,12 @@
             </div>
         </div>
         <div class="content">
-            <div class="group">
-                <img class="img" src="../../assets/005.jpg" width="245" height="150">
+
+            <div class="group" v-for="(item,index) in data" :key="item.id">
+                <img class="img" :src="'./static/cover/'+index+'.jpg'" width="245" height="150">
                 <div class="text">
-                    <div class="title" v-html="title"></div>
-                    {{msg}}
+                    <div class="title" v-html="item.title"></div>
+                    <div v-text="item.text"></div>
                     <div class="meta">
                         <span class="icon-11 icon"></span><span class="paragraph">2018-07-17</span>
                         <span class="icon-15 icon"></span><span class="paragraph">喜欢</span>
@@ -21,19 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="group">
-                <img class="img" src="../../assets/005.jpg" width="245" height="150">
-                <div class="text">
-                    <div class="title" v-html="title"></div>
-                    {{msg}}
-                    <div class="meta">
-                        <span class="icon-11 icon"></span><span class="paragraph">2018-07-17</span>
-                        <span class="icon-15 icon"></span><span class="paragraph">喜欢</span>
-                        <span class="icon-16 icon"></span><span class="paragraph">阅读(105)</span>
-                        <span class="icon-18 icon"></span><span class="paragraph">评论</span>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </template>
@@ -42,8 +31,28 @@
 export default {
     data(){
         return {
-            title:"我是标题我是大标题<span style='color:red'>我是红色的</span>",
-            msg:"我是页面内容我是页面内容我是页面内容我是页面内容我是页面内容我是页面内容我是页面内容我是页面内容我是页面内容我是页面内容我是页面内容"
+            data:[]
+        }
+    },
+    created(){
+        this.pageLoding();
+    },
+
+    methods:{
+        onscroll(a){
+            console.log(a);
+        },
+        pageLoding(){
+            var that = this;
+            this.$ajax({
+                url:"/api/blog/admin/search.php?pageindex=1&pagemax=10&textmin=false",
+                asynchronous:true,
+                dataType:"json",
+                success(res){
+                    that.data = res;
+                    console.log(that.data);
+                }
+            });
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition-group name="closeAnimation">
-    <div ref="box" v-if="$attrs.array[item].windowData.hide===true?false:true" @click.stop="mouseEvent({type:'click',id:item})"  v-for="item in $attrs.data.list" :key="item" :class="$attrs.array[item].windowData.type == 2?'windowBox2':'windowBox'" :style="'background:'+($attrs.data.activation == item?'':'#555')+';'+($attrs.array[item].windowData.width?'width:' + $attrs.array[item].windowData.width + 'px;':'')+($attrs.array[item].windowData.height?'height:' + $attrs.array[item].windowData.height + 'px;':'')+'top: '+ $attrs.array[item].windowData.top +'px;left: ' + $attrs.array[item].windowData.left +'px;z-index:'+$attrs.array[item].windowData.zindex +';'">
+    <div ref="box" v-show="$attrs.array[item].windowData.hide===true?false:true" @click.stop="mouseEvent({type:'click',id:item})"  v-for="item in $attrs.data.list" :key="item" :class="$attrs.array[item].windowData.type == 2?'windowBox2':'windowBox'" :style="'background:'+($attrs.data.activation == item?'':'#555')+';'+($attrs.array[item].windowData.width?'width:' + $attrs.array[item].windowData.width + 'px;':'')+($attrs.array[item].windowData.height?'height:' + $attrs.array[item].windowData.height + 'px;':'')+'top: '+ $attrs.array[item].windowData.top +'px;left: ' + $attrs.array[item].windowData.left +'px;z-index:'+$attrs.array[item].windowData.zindex +';'">
       <div :value="item" class="moving" onmousedown="return false;" @mousemove="mouseEvent" @mousedown.stop="mouseEvent">
         <!--标题按钮-->
         <span class="icon-8 tbutton" onmousedown="return false;" @mousedown.stop="mouseEvent({type:'click',id:item})" @click.stop="mouseEvent({type:'close',id:item})"></span>
@@ -11,10 +11,10 @@
           <span :class="$attrs.array[item].icon" class="iconfont icon" :style="'color:'+($attrs.data.activation == item?'':'#555')+';'"></span>
       </div>
       <span class="text">{{$attrs.array[item].name}}</span>
-      <div class="pages" @mousedown.stop="mouseEventStop" >
-        <pagearticle></pagearticle>
+      <div class="pages" @mousedown.stop="mouseEventStop" ref="pagebox">
+        <pagearticle ref="article"></pagearticle>
       </div>
-    </div>-0
+    </div>
     </transition-group>
   </div>
 </template>
@@ -36,7 +36,19 @@ export default {
 
     }
   },
+  updated(){
+    var that = this;
+    if(this.$refs.pagebox.length > 0){
+      this.$refs.pagebox[0].onscroll = function(res){
+        that.scrollTop(this.scrollTop);
+      };
+    }
+
+  },
   methods:{
+    scrollTop(top){
+      console.log(this);
+    },
     mouseEvent(res){
 
       switch(res.type){
