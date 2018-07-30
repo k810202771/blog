@@ -61,6 +61,7 @@ export default {
         background: #fff;
         z-index: 99;
         text-align: center;
+        box-shadow: 0px 0px 10px #ddd;
     }
     .menu_center{
         display: inline-block;

@@ -1,5 +1,4 @@
 <?php
-
 	/*
 	* s:搜索词 不可与id重复
 	* id：重这里开始搜索
@@ -42,7 +41,7 @@
 	}else{
 		$search = '';
 	}
-	//分割字符串成 N 个词组 N = strlen - 1
+	//分割字符串成 N 个词组 N = strlen - 1 我的好人 -> 我的 的好 好人
 	$seo = $worm -> str_center($search);
 	//初始化查询条件字符串
 	$text = '';
@@ -61,7 +60,7 @@
 	}else{
 		$id = '';
 	}
-	$where = ($id?' WHERE '.$id:($text?' WHERE '.$id:''));
+	$where = ($id?' WHERE '.$id:($text?' WHERE '.$text:''));
 	//执行mysql查询
 	if(isset($_GET['s'])){
 		$sql = 'select '.$column.' from `fawf` '. $where;
@@ -94,11 +93,10 @@
 
 		$echodata = [];
 		for($i=$pageindex*$pagemax;$i<($pageindex+1)*$pagemax;$i++){
-			if(isset($basedata[$i]) === true){
+			if(isset($basedata[$i]) == true){
 				array_push($echodata,$basedata[$i]);
 			}
 		}
-		
 		echo(json_encode($echodata,JSON_UNESCAPED_UNICODE));
 	}else{
 		echo(json_encode($basedata,JSON_UNESCAPED_UNICODE));

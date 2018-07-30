@@ -36,6 +36,7 @@
 	font-size: 0;
 }
 .syntaxhighlighterBox{
+	width: 100%!important;
 	position: relative!important;
 	display: inline-block!important;
 }

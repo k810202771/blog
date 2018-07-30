@@ -12,7 +12,7 @@
       </div>
       <span class="text">{{$attrs.array[item].name}}</span>
       <div class="pages" @mousedown.stop="mouseEventStop" ref="pagebox">
-        <pagearticle ref="article"></pagearticle>
+        <pagearticle></pagearticle>
       </div>
     </div>
     </transition-group>
@@ -36,19 +36,7 @@ export default {
 
     }
   },
-  updated(){
-    var that = this;
-    if(this.$refs.pagebox.length > 0){
-      this.$refs.pagebox[0].onscroll = function(res){
-        that.scrollTop(this.scrollTop);
-      };
-    }
-
-  },
   methods:{
-    scrollTop(top){
-      console.log(this);
-    },
     mouseEvent(res){
 
       switch(res.type){
@@ -136,7 +124,7 @@ export default {
   left: 2px;
   background: #f6f6f6;
   border-radius: 5px;
-  overflow: auto;
+  overflow: hidden;
 }
 .windowBox2 .pages{
   position: absolute;

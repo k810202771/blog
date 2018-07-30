@@ -3,8 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {ajax} from './assets/js/ajax.js'
-import {enhtml,dehtml} from './assets/js/htmlcodec.js'
+import {ajax} from '../static/js/ajax.js'
+import {enhtml,dehtml} from '../static/js/htmlcodec.js'
 
 Vue.prototype.$ajax = ajax;
 Vue.prototype.$enhtml = enhtml;

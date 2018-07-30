@@ -2,14 +2,14 @@
     <div class="box">
         <headnav width="990px"></headnav>
         <div class="content">
-            <div class="article-header"><h1 class="article-title" v-html="title"></h1></div>
+            <div class="article-header"><h1 class="article-title" v-html="data.title"></h1></div>
             <div class="article-meta">
-                <span class="icon-11 icon"></span><span class="paragraph">2018-07-17</span>
-                <span class="icon-16 icon"></span><span class="paragraph">阅读(105)</span>
+                <span class="icon-11 icon"></span><span class="paragraph">{{data.reg_date}}</span>
+                <span class="icon-16 icon"></span><span class="paragraph">阅读({{data.volume}})</span>
                 <span class="icon-18 icon"></span><span class="paragraph">评论</span>
             </div>
             <div class="line"></div>
-            <div class="article-content" v-html="msg">
+            <div class="article-content" v-html="data.text">
                 
             </div>
         </div>
@@ -21,18 +21,20 @@
 export default {
     data(){
         return {
-            msg:'',
-            title:''
+            data:''
         }
     },
     mounted(){
+        console.log(this);
         var that = this;
         this.$ajax({
-            url:"./static/1.json",
+            url:"/api/blog/admin/search.php?pageindex=0&pagemax=1&id=" + this.$route.params.newsId,
+            dataType:"json",
             success(res){
-                res = JSON.parse(res);
-                that.msg = that.$dehtml(res.msg);
-                that.title = that.$dehtml(res.title);
+                console.log(res);
+                that.data = res[0];
+                that.data.title = that.$dehtml(that.data.title);
+                that.data.text = that.$dehtml(that.data.text);
                 //console.log(res);
             }
         });
