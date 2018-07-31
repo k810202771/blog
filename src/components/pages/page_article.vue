@@ -52,14 +52,13 @@ export default {
             var _this = this;
             clearTimeout(tid);
             tid = setTimeout(function(){
-                console.log(123123);
                 var scrollMax = _this.scrollHeight - _this.offsetHeight;
                 var scroll = _this.scrollTop;
                 if(scroll > scrollMax - 200){
                     that.pageLoding();
                 }
             },100)
-        };
+        }
     },
     methods:{
         onscroll(a){
@@ -70,6 +69,7 @@ export default {
             if(this.ajax_state == 0){
                 //锁定ajax
                 this.ajax_state = 1;
+                console.log(123123);
                 //开始ajax
                 this.$ajax({
                     //url:"/api/blog/admin/search.php?textmin=false&s="+ encodeURI("我") +"&pageindex="+(that.page_index)+"&pagemax="+(that.page_max),
