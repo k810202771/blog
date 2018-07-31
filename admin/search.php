@@ -63,18 +63,18 @@
 	$where = ($id?' WHERE '.$id:($text?' WHERE '.$text:''));
 	//执行mysql查询
 	if(isset($_GET['s'])){
-		$sql = 'select '.$column.' from `fawf` '. $where;
+		$sql = 'select '.$column.' from `articleData` '. $where;
 	}else{
-		$sql = 'select '.$column.' from `fawf` '. $where ." order by id desc ". "limit ". ((int)$pageindex * (int)$pagemax).",".($pagemax);
+		$sql = 'select '.$column.' from `articleData` '. $where ." order by id desc ". "limit ". ((int)$pageindex * (int)$pagemax).",".($pagemax);
 	}
 	//. ' limit '.$pageindex.','.$pagemax
 
 	//res为查询结果 记得清除res的查询结果，res -> close()
 	$res = $conn->query($sql);
 	//查询总结果数组初始化数据
-	$basedata = [];
+	$basedata = array();
 	//查询结果排序数组初始化数据
-	$sort = [];
+	$sort = array();
 	while($row = $res->fetch_object()){
 		//插入相似度数值
 		array_push($sort,similar_text($row->title,$search));
@@ -91,7 +91,7 @@
 		//排序数组SORT_DESC为倒叙，相似度越大越靠前
 		array_multisort($sort,SORT_DESC,$basedata);
 
-		$echodata = [];
+		$echodata = array();
 		for($i=$pageindex*$pagemax;$i<($pageindex+1)*$pagemax;$i++){
 			if(isset($basedata[$i]) == true){
 				array_push($echodata,$basedata[$i]);

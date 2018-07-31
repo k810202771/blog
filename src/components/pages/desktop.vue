@@ -1,6 +1,6 @@
 <template>
   <div class="bg" onmousedown="return false" oncontextmenu="return false" @contextmenu="upmouse" @mousemove="upmouse" @click="upmouse">
-    <desktopicon :data="taskbar" :array="Icon" :element="item" :boxid="index" v-for="(item, index) in Icon" :key="index" @InitializationWindow="InitializationWindow" @windowlayer="windowlayer"></desktopicon>
+    <desktopicon :data="taskbar" :array="desktop" :element="item" :boxid="index" v-for="(item, index) in desktop" :key="index" @InitializationWindow="InitializationWindow" @windowlayer="windowlayer"></desktopicon>
     <taskbar :data="taskbar" :array="Icon" @windowlayer="windowlayer"></taskbar>
     <window :data="taskbar" :array="Icon" :mouse="mouse" ref="window" @windowlayer="windowlayer"></window>
   </div>
@@ -21,11 +21,12 @@ export default {
   components:{
     taskbar,
     desktopicon,
-    window
+    window,
   },
   name: 'desktop',
   data () {
     return {
+      pageid:0,//窗口位置id
       msg: '',
       mouse:{x:0,y:0},
       //任务栏数据
@@ -41,6 +42,7 @@ export default {
           target:"window", //page新窗口打开页面，window打开窗口
           zindex:99, //层级
           hide:false, //隐藏 (true 最小化),(false 显示)
+          explorer:true,//在桌面显示 true（显示） false（隐藏）
           type:0, //0创建后居中，1按照位置初始化  2全屏幕(位置无效，宽高无效)
           top:0, //位置 top left 宽高 width height
           left:0
@@ -50,6 +52,7 @@ export default {
           target:"window", //page新窗口打开页面，window打开窗口
           zindex:99,
           hide:false, //隐藏 (true 最小化),(false 显示)
+          explorer:true,//在桌面显示 true（显示） false（隐藏）
           type:2, //0创建后居中，1按照位置初始化  2全屏幕
           top:100,
           left:500
@@ -59,6 +62,7 @@ export default {
           target:"page", //page新窗口打开页面，window打开窗口
           zindex:99,
           hide:false, //隐藏 (true 最小化),(false 显示)
+          explorer:true,//在桌面显示 true（显示） false（隐藏）
           type:1, //0创建后居中，1按照位置初始化  2全屏幕
           top:200,
           left:500
@@ -67,8 +71,9 @@ export default {
           url:"",
           target:"window", //page新窗口打开页面，window打开窗口
           zindex:99,
-          hide:false, //隐藏 (true 最小化),(false 显示)
           type:0, //0创建后居中，1按照位置初始化  2全屏幕
+          hide:false, //隐藏 (true 最小化),(false 显示)
+          explorer:true,//在桌面显示 true（显示） false（隐藏）
           top:50,
           left:800
         }},
@@ -78,11 +83,32 @@ export default {
           zindex:99,
           type:0, //0创建后居中，1按照位置初始化 2全屏幕
           hide:false, //隐藏 (true 最小化),(false 显示)
+          explorer:false,//在桌面显示 true（显示） false（隐藏）
           top:50,
           left:800,
           width:160
         }},
-      ]
+        {icon:"icon-4",name:"留言板",select:"flase",windowData:{
+          url:"",
+          target:"window", //page新窗口打开页面，window打开窗口
+          zindex:99,
+          type:0, //0创建后居中，1按照位置初始化 2全屏幕
+          hide:false, //隐藏 (true 最小化),(false 显示)
+          explorer:true,//在桌面显示 true（显示） false（隐藏）
+          top:50,
+          left:800,
+          width:160
+        }},
+      ],
+      desktop:[]
+    }
+  },
+  created(){
+    this
+    for(var i=0;i<this.Icon.length;i++){
+      if(this.Icon[i].windowData.explorer == true){
+        this.desktop.push(this.Icon[i]);
+      };
     }
   },
   mounted(){

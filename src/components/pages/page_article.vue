@@ -47,12 +47,18 @@ export default {
     },
     mounted(){
         var that = this;
+        var tid = 0;
         this.$refs.scroll.onscroll = function(res){
-            var scrollMax = this.scrollHeight - this.offsetHeight;
-            var scroll = this.scrollTop;
-            if(scroll > scrollMax - 200){
-                that.pageLoding();
-            }
+            var _this = this;
+            clearTimeout(tid);
+            tid = setTimeout(function(){
+                console.log(123123);
+                var scrollMax = _this.scrollHeight - _this.offsetHeight;
+                var scroll = _this.scrollTop;
+                if(scroll > scrollMax - 200){
+                    that.pageLoding();
+                }
+            },100)
         };
     },
     methods:{

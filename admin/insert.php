@@ -15,11 +15,16 @@
 		}
 		return $b;
 	}
-
-	for($i=0;$i<4000;$i++){
-		$sql = 'insert into `fawf`(title,cover,text,volume,replyindex,reg_date)values("'.getChar(15).'","","'.getChar(20000).'","'.mt_rand(1,10).'","'.mt_rand(1,10).'",NOW())';
+	for($i=0;$i<5;$i++){
+		$sql = 'insert into `babel`(babelName)values("web")';
 		$res = $conn->query($sql);
 	}
+
+	for($i=0;$i<4000;$i++){
+		$sql = 'insert into `articleData`(title,cover,text,volume,replyindex,reg_date,babel)values("'.'我的'.getChar(15).'","","'.getChar(20000).'","'.mt_rand(1,10).'","'.mt_rand(1,10).'",NOW(),"[1]")';
+		$res = $conn->query($sql);
+	}
+
 	//关闭数据库
 	$conn->close();
 ?>

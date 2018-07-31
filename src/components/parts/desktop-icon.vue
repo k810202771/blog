@@ -17,6 +17,7 @@ export default {
     }
   },
   mounted (){
+      console.log(this.$attrs)
     let box = this.$refs.box;
     let maxid = parseInt(window.innerHeight / box.offsetHeight);
     let array = {y:0,x:0};
